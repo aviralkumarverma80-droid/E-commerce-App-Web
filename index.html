@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ff5a5f" />
+    <title>Haatly — Everyday finds, delivered</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="announcement"><span>FREE delivery on orders over ₹499</span><span class="announcement-link">Download the app&nbsp; →</span></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Haatly home"><span class="brand-mark">A</span><span>Arrival</span></a>
+        <div class="search-wrap">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.1-5.4a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" /></svg>
+          <input id="search-input" type="search" placeholder="Search for kurtis, kitchen, beauty..." autocomplete="off" />
+          <kbd>⌘ K</kbd>
+        </div>
+        <div class="header-actions">
+          <div class="profile-wrap"><a class="icon-action" id="profile-link" href="login.html" aria-label="Your profile" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.8 20c.65-3.3 3.08-5.2 7.2-5.2s6.55 1.9 7.2 5.2"/></svg><span id="profile-label">Profile</span><i class="profile-dot" id="profile-dot"></i><b class="profile-caret">⌄</b></a><div class="profile-panel" id="profile-panel" hidden><div class="profile-panel-head"><span class="profile-avatar" id="profile-avatar">A</span><div><strong id="profile-name">Your profile</strong><span id="profile-email">Sign in to manage your account</span></div></div><div class="profile-status"><span></span> Account active</div><div class="profile-details"><div><strong id="profile-orders-count">0</strong><span>Orders</span></div><div><strong id="profile-saved-count">0</strong><span>Saved</span></div><div><strong id="profile-member-since">Today</strong><span>Member since</span></div></div><div class="profile-delivery"><span>⌖</span><div><strong>Delivery address</strong><small>Set your address for faster checkout</small></div><button type="button" data-profile-action="address" aria-label="Add delivery address">＋</button></div><div class="profile-links"><button type="button" data-profile-action="orders">Orders <span>→</span></button><button type="button" data-profile-action="saved">Saved finds <span>→</span></button></div><button class="profile-signout" id="profile-signout" type="button">Sign out</button></div></div>
+          <div class="cart-wrap"><button class="icon-action cart-button" id="cart-button" type="button" aria-label="Shopping bag"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 8.5h14l-1 11H6l-1-11Z"/><path d="M9 9V6.8a3 3 0 0 1 6 0V9"/></svg><span>Bag</span><b id="cart-count">0</b></button><div class="cart-panel" id="cart-panel" hidden><div class="cart-panel-head"><div><p class="eyebrow">Your bag</p><h3>Ready to order?</h3></div><button class="panel-close" id="cart-close" type="button" aria-label="Close bag">×</button></div><div class="cart-items" id="cart-items"></div><div class="cart-footer"><div><span>Total</span><strong id="cart-total">₹0</strong></div><button class="place-order" id="place-order" type="button">Place order <span>↗</span></button></div></div></div>
+        </div>
+      </div>
+      <nav class="category-nav" aria-label="Main navigation">
+        <a class="active" href="#products">All products</a><a href="#products" data-category="Women">Women</a><a href="#products" data-category="Men">Men</a><a href="#products" data-category="Home & Living">Home & Living</a><a href="#products" data-category="Beauty">Beauty</a><a href="#products" data-category="Accessories">Accessories</a><a href="#offers">Deals</a>
+      </nav>
+    </header>
+
+    <div class="payment-backdrop" id="payment-backdrop" hidden>
+      <section class="payment-modal" role="dialog" aria-modal="true" aria-labelledby="payment-title">
+        <div class="payment-modal-head"><div><p class="eyebrow">Secure checkout</p><h2 id="payment-title">Complete your <em>order.</em></h2></div><button class="panel-close" id="payment-close" type="button" aria-label="Close payment">×</button></div>
+        <div class="payment-summary"><span>Order total</span><strong id="payment-total">₹0</strong></div>
+        <div class="payment-methods"><button class="payment-method active" type="button" data-payment-method="card"><span>▣</span> Card</button><button class="payment-method" type="button" data-payment-method="upi"><span>⌁</span> UPI</button><button class="payment-method" type="button" data-payment-method="cod"><span>⌂</span> Cash on delivery</button></div>
+        <form id="payment-form">
+          <div class="payment-fields" id="card-fields"><label>Card number<input id="card-number" inputmode="numeric" placeholder="1234  5678  9012  3456" minlength="16" required /></label><div class="payment-field-row"><label>Expiry<input id="card-expiry" placeholder="MM / YY" required /></label><label>CVV<input id="card-cvv" inputmode="numeric" placeholder="•••" minlength="3" required /></label></div><label>Name on card<input id="card-name" placeholder="Your full name" required /></label></div>
+          <div class="payment-fields" id="upi-fields" hidden><label>UPI ID<input id="upi-id" placeholder="name@bank" /></label><p class="payment-hint">You will receive a payment request in your UPI app.</p></div>
+          <div class="payment-fields" id="cod-fields" hidden><p class="cod-note"><strong>Pay when your order arrives.</strong><br />A small ₹29 handling fee will be added at delivery.</p></div>
+          <button class="confirm-payment" id="confirm-payment" type="submit">Pay <span id="confirm-payment-total">₹0</span> <span>↗</span></button>
+          <p class="payment-note">🔒 Your payment details are encrypted and secure.</p>
+        </form>
+      </section>
+    </div>
+
+    <main id="top">
+      <section class="hero shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> The everyday edit</p>
+          <h1>Good things.<br /><em>Better prices.</em></h1>
+          <p class="hero-description">Curated finds from local sellers, made for your everyday moments.</p>
+          <div class="hero-buttons"><a class="button button-dark" href="#products">Shop the edit <span>↗</span></a><a class="text-link" href="#categories">Explore categories <span>↓</span></a></div>
+          <div class="trust-row"><div class="avatar-stack"><span>R</span><span>A</span><span>M</span><span>+</span></div><p><strong>2.4M+</strong> happy shoppers<br /><small>rating our finds 4.8/5</small></p></div>
+        </div>
+        <div class="hero-art">
+          <div class="sun-disc"></div><div class="hero-label label-top">NEW<br /><strong>in</strong></div>
+          <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?auto=format&fit=crop&w=900&q=85" alt="Man wearing a relaxed neutral outfit" />
+          <div class="hero-note"><span>01</span><p>Light layers<br />for bright days</p><i>↗</i></div>
+          <div class="shape shape-one"></div><div class="shape shape-two"></div>
+        </div>
+      </section>
+
+      <section class="category-section shell" id="categories">
+        <div class="section-heading"><div><p class="eyebrow">Shop by mood</p><h2>Find your next <em>favourite</em></h2></div><a class="text-link" href="#products">View all <span>→</span></a></div>
+        <div class="category-grid">
+          <button class="category-tile tile-coral" data-category="Men"><span class="tile-number">01</span><img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?auto=format&fit=crop&w=500&q=80" alt="Men's fashion" /><span class="tile-name">Men <b>↗</b></span></button>
+          <button class="category-tile tile-yellow" data-category="Home & Living"><span class="tile-number">02</span><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=500&q=80" alt="Home decor" /><span class="tile-name">Home & Living <b>↗</b></span></button>
+          <button class="category-tile tile-blue" data-category="Men"><span class="tile-number">03</span><img src="https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=500&q=80" alt="Men's grooming products" /><span class="tile-name">Grooming <b>↗</b></span></button>
+          <button class="category-tile tile-green" data-category="Accessories"><span class="tile-number">04</span><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=500&q=80" alt="Accessories" /><span class="tile-name">Accessories <b>↗</b></span></button>
+        </div>
+      </section>
+
+      <section class="products-section shell" id="products">
+        <div class="section-heading product-heading"><div><p class="eyebrow">Picked for you</p><h2>Trending <em>right now</em></h2></div><div class="sort-wrap"><span>Sort by</span><select id="sort-select" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></div></div>
+        <div class="filter-row"><button class="filter active" data-category="All">All</button><button class="filter" data-category="Men">Men</button><button class="filter" data-category="Home & Living">Home & Living</button><button class="filter" data-category="Beauty">Beauty</button><button class="filter" data-category="Accessories">Accessories</button><span class="result-count" id="result-count">8 finds</span></div>
+        <div class="product-grid" id="product-grid"></div>
+        <div class="empty-state" id="empty-state" hidden><strong>No finds here yet.</strong><span>Try another search or category.</span></div>
+      </section>
+
+      <section class="offer-banner shell" id="offers"><div class="offer-stamp">SAVE<br /><strong>25%</strong></div><div><p class="eyebrow">A little treat</p><h2>First order, <em>extra joy.</em></h2><p>Use code <strong>HAATLY25</strong> at checkout and save up to ₹300.</p></div><button class="button button-light" type="button" id="copy-code">Copy code</button></section>
+    </main>
+    <footer><div class="footer-inner"><a class="brand" href="#top"><span class="brand-mark">h</span><span>Arrival</span></a><p>Good things find you here.</p><div class="footer-links"><a href="#products">Shop</a><a href="#categories">Categories</a><a href="#offers">Offers</a></div></div></footer>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="database.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

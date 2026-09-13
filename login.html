@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ff635d" />
+    <title>Sign in — Arrival</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body.login-page { min-height: 100vh; background: #f7f4ee; }
+      .login-shell { min-height: 100vh; display: grid; grid-template-columns: 47% 53%; }
+      .login-visual { background: var(--coral); position: relative; overflow: hidden; padding: 42px 8%; display: flex; flex-direction: column; justify-content: space-between; }
+      .login-visual .brand { color: var(--ink); }
+      .login-visual .brand-mark { background: var(--ink); }
+      .login-visual h1 { font: 600 clamp(48px, 5.5vw, 78px)/.96 var(--serif); letter-spacing: -.06em; max-width: 500px; margin: 0; position: relative; z-index: 2; }
+      .login-visual h1 em { color: #fff; font-style: normal; }
+      .login-visual p { font-size: 13px; line-height: 1.55; max-width: 250px; margin: 22px 0 0; position: relative; z-index: 2; }
+      .login-photo { width: 67%; height: 275px; object-fit: cover; position: absolute; right: 0; bottom: 0; mix-blend-mode: multiply; opacity: .9; }
+      .login-circle { width: 370px; height: 370px; border: 1px solid rgba(32,32,30,.28); border-radius: 50%; position: absolute; right: -150px; top: 15%; }
+      .login-circle-small { width: 90px; height: 90px; border-radius: 50%; background: var(--yellow); position: absolute; right: 14%; top: 20%; }
+      .login-mark { font-size: 11px; letter-spacing: .13em; margin: 0; }
+      .login-form-panel { display: flex; align-items: center; justify-content: center; padding: 42px 10%; position: relative; }
+      .back-link { position: absolute; top: 42px; left: 10%; font-size: 12px; color: var(--muted); }
+      .back-link span { font-size: 16px; margin-right: 8px; }
+      .login-form { width: 100%; max-width: 390px; }
+      .login-form .eyebrow { margin-bottom: 13px; }
+      .login-form h2 { font: 600 42px/1.05 var(--serif); letter-spacing: -.05em; margin: 0 0 11px; }
+      .login-form h2 em { font-style: normal; color: var(--coral); }
+      .login-subtitle { color: var(--muted); font-size: 13px; margin: 0 0 30px; }
+      .field { display: block; margin-bottom: 17px; }
+      .field-label { display: block; font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+      .field-control { height: 48px; border: 1px solid #dad5cd; background: #fff; border-radius: 3px; display: flex; align-items: center; padding: 0 13px; }
+      .field-control:focus-within { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(255,99,93,.13); }
+      .field-control input { width: 100%; border: 0; outline: 0; background: transparent; font: inherit; font-size: 13px; color: var(--ink); }
+      .field-control input::placeholder { color: #aaa49c; }
+      .toggle-password { background: transparent; font-size: 11px; color: var(--muted); padding: 0; }
+      .form-row { display: flex; justify-content: space-between; align-items: center; margin: -2px 0 23px; font-size: 11px; }
+      .remember { display: flex; align-items: center; gap: 7px; color: var(--muted); }
+      .remember input { accent-color: var(--coral); }
+      .forgot-link { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+      .login-submit { width: 100%; min-height: 49px; background: var(--ink); color: #fff; border-radius: 3px; font-size: 12px; font-weight: 700; }
+      .login-submit:hover { background: var(--coral); }
+      .divider { display: flex; align-items: center; gap: 13px; color: #aaa49c; font-size: 10px; margin: 25px 0 18px; }
+      .divider::before, .divider::after { content: ''; height: 1px; background: var(--line); flex: 1; }
+      .social-login { width: 100%; min-height: 45px; background: #fff; border: 1px solid #dad5cd; border-radius: 3px; font-size: 12px; font-weight: 600; }
+      .social-login:hover { border-color: var(--ink); }
+      .signup-prompt { text-align: center; color: var(--muted); font-size: 11px; margin: 26px 0 0; }
+      .signup-prompt a { color: var(--coral); font-weight: 700; margin-left: 5px; }
+      .login-status { min-height: 18px; color: #388359; font-size: 11px; text-align: center; margin: 13px 0 -7px; }
+      @media (max-width: 760px) { .login-shell { grid-template-columns: 1fr; } .login-visual { min-height: 315px; padding: 26px 24px; } .login-visual h1 { font-size: 49px; margin-top: 32px; } .login-visual p { display: none; } .login-photo { height: 180px; width: 53%; } .login-circle { top: 2%; right: -210px; } .login-circle-small { right: 22%; top: 32%; width: 55px; height: 55px; } .login-form-panel { padding: 76px 24px 46px; } .back-link { top: 27px; left: 24px; } }
+    </style>
+  </head>
+  <body class="login-page">
+    <main class="login-shell">
+      <section class="login-visual" aria-label="Arrival shopping community">
+        <a class="brand" href="index.html" aria-label="Back to Arrival home"><span class="brand-mark">h</span><span>Arrival</span></a>
+        <div><p class="login-mark">A little closer to good things</p><h1>Welcome to<br /><em>your kind</em> of finds.</h1><p>Sign in to save favourites, follow orders, and pick up right where you left off.</p></div>
+        <div class="login-circle"></div><div class="login-circle-small"></div>
+        <img class="login-photo" src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85" alt="Person wearing a light summer outfit" />
+      </section>
+      <section class="login-form-panel">
+        <a class="back-link" href="index.html"><span>←</span> Back to shop</a>
+        <form class="login-form" id="login-form">
+          <p class="eyebrow"><span></span> Your account</p>
+          <h2>Good to see<br /><em>you again.</em></h2>
+          <p class="login-subtitle">Enter your details to continue shopping.</p>
+          <label class="field"><span class="field-label">Email address</span><span class="field-control"><input id="email" type="email" placeholder="you@example.com" autocomplete="email" required /></span></label>
+          <label class="field"><span class="field-label">Password</span><span class="field-control"><input id="password" type="password" placeholder="Enter your password" autocomplete="current-password" required minlength="6" /><button class="toggle-password" id="toggle-password" type="button">Show</button></span></label>
+          <div class="form-row"><label class="remember"><input type="checkbox" /> Keep me signed in</label><a class="forgot-link" href="#" id="forgot-link">Forgot password?</a></div>
+          <button class="login-submit" type="submit">Sign in <span>↗</span></button>
+          <p class="login-status" id="login-status" aria-live="polite"></p>
+          <div class="divider">or continue with</div>
+          <button class="social-login" type="button" id="social-login">Continue with Google</button>
+          <p class="signup-prompt">New to Arrival?<a href="#" id="signup-link">Create an account</a></p>
+        </form>
+      </section>
+    </main>
+    <script src="database.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>
